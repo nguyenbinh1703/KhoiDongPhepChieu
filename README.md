@@ -20,7 +20,7 @@ Mô hình đưa kiến thức toán học trừu tượng thành trải nghiệm
 
 ## ✨ 2. Các Tính năng Nổi bật
 
-### 📐 Chuẩn mực Sư phạm & Hình học không gian
+### 📐 Hình học không gian
 * **4 khối hình không gian chuẩn SGK Toán 11:** Khối trụ, Khối chóp tứ giác đều, Khối hộp chữ nhật, Khối lăng trụ tam giác.
 * **Quy ước biểu diễn kỹ thuật TCVN / ISO:** Tự động phân tách nét liền đậm cho các cạnh thấy và nét đứt đều đặn cho các cạnh khuất theo đúng góc nhìn 3D.
 * **Mặt phẳng hình chiếu $(P)$:** Thiết kế hình bình hành ngang đúng nguyên tắc vẽ hình học không gian trên mặt phẳng (hai cạnh trước - sau luôn nằm ngang $100\%$ trên màn hình).
@@ -29,14 +29,13 @@ Mô hình đưa kiến thức toán học trừu tượng thành trải nghiệm
 ### ☀️ Nguồn sáng & Hình bóng toán học chính xác tuyệt đối
 * **Mô phỏng nguồn sáng mặt trời trên cao:** Đèn laser hình trụ bán kính lớn ($R = 1.10$, bán kính quỹ đạo $RL = 4.2$), độ cao đèn giữ nguyên cố định khi chuyển đổi các khối hình.
 * **Dải góc chiếu liên tục:** Điều chỉnh góc nghiêng $\alpha \in [30^\circ, 150^\circ]$.
-* **Phép chiếu vuông góc ($\alpha = 90^\circ$):** Bóng nằm trọn vẹn $100\%$ dưới đáy chân đế và bị thân vật thể che khuất hoàn toàn (sai lệch $0.0000000000$).
+* **Phép chiếu vuông góc ($\alpha = 90^\circ$):** Bóng nằm trọn vẹn $100\%$ dưới đáy chân đế và bị thân vật thể che khuất hoàn toàn.
 * **Thuật toán Convex Hull Andrew's Monotone Chain (Zero-GC):** Tính toán vết bóng thời gian thực với bộ đệm tĩnh tái sử dụng, không gây giật lag khung hình.
 
 ### 🎨 Giao diện Đồ họa Phẳng & Trải nghiệm Người dùng
 * **Phong cách Flat Design hiện đại:** Bảng điều khiển dạng phẳng, viền đôi sắc nét (`border-2 border-slate-300`), không bóng mờ, nổi bật tinh tế.
 * **Đồng bộ hóa 2 dòng công thái học:** Dòng 1 là thanh trượt Góc chiếu; Dòng 2 chia tỉ lệ 4:6 gồm ô chọn Khối 3D và ô thanh trượt Độ sáng.
 * **Động cơ âm thanh Web Audio DSP phản hồi xúc giác:** Khởi động sớm triệt tiêu độ trễ (0ms), bộ nén Master Limiter chống rè loa khi bấm liên thanh, quản lý đơn âm sắc dứt khoát.
-* **Khóa phím an toàn & Chống bấm nhầm:** Chặn phím `Tab`, `Space`, phím `F12` và các tổ hợp mở mã nguồn; đồng bộ phím `F11`, phím `Esc` và nút giao diện khi vào/ra chế độ Toàn màn hình.
 * **Hoạt động Offline 100%:** Ứng dụng Client-Side độc lập hoàn toàn, không phụ thuộc internet khi đang chạy, mạng yếu hay rớt mạng vẫn vận hành trơn tru.
 
 ---
@@ -71,38 +70,6 @@ npm run build
 
 # Xem thử bản đóng gói production
 npm run preview
-```
-Toàn bộ mã nguồn đã biên dịch và tối ưu hóa sẽ nằm tại thư mục `dist/`, sẵn sàng tải lên **GitHub Pages**, **Vercel**, **Netlify** hoặc bất kỳ máy chủ tĩnh (Static Hosting) nào.
-
----
-
-## 📂 4. Cấu trúc Thư mục Dự án
-
-```text
-├── public/                 # Tài nguyên tĩnh công khai (logo, favicon)
-│   ├── favicon.ico
-│   ├── favicon.svg
-│   └── logo.png
-├── src/                    # Toàn bộ mã nguồn ứng dụng
-│   ├── components/         # Các thành phần giao diện React & 3D
-│   │   ├── LabCanvas3D.tsx     # Không gian mô phỏng 3D Three.js & bóng chiếu
-│   │   ├── LabControlDock.tsx  # Bảng điều khiển dạng phẳng 2 dòng
-│   │   ├── LabErrorBoundary.tsx# Màn chắn bắt lỗi và phục hồi ứng dụng
-│   │   ├── LabHeader.tsx       # Thanh tiêu đề, nút toàn màn hình & trợ giúp
-│   │   └── LabHelpModal.tsx    # Cửa sổ hướng dẫn cảm ứng & liên hệ tác giả
-│   ├── types/              # Định nghĩa kiểu dữ liệu TypeScript
-│   │   └── lab.ts
-│   ├── utils/              # Tiện ích bổ trợ
-│   │   └── audio.ts            # Động cơ âm thanh Web Audio DSP zero-latency
-│   ├── App.tsx             # Điều phối trạng thái chính, phím tắt & toàn màn hình
-│   ├── index.css           # Cấu hình Tailwind CSS & triệt tiêu focus
-│   └── main.tsx            # Điểm khởi chạy React DOM
-├── index.html              # Trang HTML chính của ứng dụng
-├── package.json            # Khai báo thư viện & các lệnh script
-├── tsconfig.json           # Cấu hình trình biên dịch TypeScript
-├── vite.config.ts          # Cấu hình đóng gói Vite (base: './')
-├── PROJECT_MEMORY_LOG.md   # Nhật ký quản lý phiên bản & sổ tay toán học
-└── README.md               # Tài liệu hướng dẫn dự án
 ```
 
 ---
