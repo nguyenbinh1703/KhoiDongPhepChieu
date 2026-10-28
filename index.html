@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/png" href="./logo.png" />
+    <link rel="apple-touch-icon" href="./logo.png" />
+    <script>
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var currentFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() { return currentFetch; },
+            set: function(fn) { currentFetch = fn; },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {}
+
+        // --- Hệ thống Bảo Mật Chống Sao Chép, Chống Tải Xuống & Chống Mở DevTools ---
+        // 1. Chặn menu ngữ cảnh chuột phải trên toàn trang
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          return false;
+        }, { capture: true });
+
+        // 2. Chặn kéo thả hình ảnh và tài nguyên trang web
+        document.addEventListener('dragstart', function(e) {
+          e.preventDefault();
+          return false;
+        }, { capture: true });
+
+        // 3. Chặn bôi đen và lựa chọn văn bản
+        document.addEventListener('selectstart', function(e) {
+          e.preventDefault();
+          return false;
+        }, { capture: true });
+
+        // 4. Chặn các phím tắt nguy hiểm: F12, Ctrl+U, Ctrl+S, Ctrl+P, Ctrl+Shift+I/J/C/S, Ctrl+A
+        window.addEventListener('keydown', function(e) {
+          var k = (e.key || '').toLowerCase();
+          var c = e.code || '';
+          var isCtrl = e.ctrlKey || e.metaKey;
+
+          // Chặn phím F12 (DevTools)
+          if (e.keyCode === 123 || k === 'f12' || c === 'F12') {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+
+          if (isCtrl) {
+            // Chặn Ctrl+U (Xem nguồn trang web)
+            // Chặn Ctrl+S / Ctrl+Shift+S (Lưu trang web / Tải về máy)
+            // Chặn Ctrl+P (In ấn / Xuất file PDF)
+            // Chặn Ctrl+A (Bôi đen toàn trang)
+            // Chặn Ctrl+Shift+I / J / C (Kiểm tra phần tử / Console)
+            if (
+              k === 'u' || c === 'KeyU' ||
+              k === 's' || c === 'KeyS' ||
+              k === 'p' || c === 'KeyP' ||
+              k === 'a' || c === 'KeyA' ||
+              (e.shiftKey && (k === 'i' || k === 'j' || k === 'c' || c === 'KeyI' || c === 'KeyJ' || c === 'KeyC' || c === 'KeyS'))
+            ) {
+              e.preventDefault();
+              e.stopPropagation();
+              return false;
+            }
+          }
+
+          // Chặn phím tắt cho MacOS: Cmd+Option+I, Cmd+Option+J, Cmd+Option+C, Cmd+Option+U
+          if (e.metaKey && e.altKey) {
+            if (k === 'i' || k === 'j' || k === 'c' || k === 'u' || c === 'KeyI' || c === 'KeyJ' || c === 'KeyC' || c === 'KeyU') {
+              e.preventDefault();
+              e.stopPropagation();
+              return false;
+            }
+          }
+        }, { capture: true });
+      })();
+    </script>
+    <title>Mô Hình Thí Nghiệm</title>
+    <meta name="description" content="Mô hình thí nghiệm phép chiếu song song và phép chiếu vuông góc." />
+    <meta property="og:title" content="Mô Hình Thí Nghiệm" />
+    <meta property="og:description" content="Mô phỏng thí nghiệm quang học phép chiếu song song và phép chiếu vuông góc với nguồn sáng laser" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root">
+      <div id="initial-loader" style="position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f8fafc;font-family:'Plus Jakarta Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#0f172a;z-index:99999;user-select:none;-webkit-user-select:none;">
+        <div style="width:36px;height:36px;border-radius:50%;border:3px solid #e2e8f0;border-top-color:#0284c7;animation:spin 0.8s linear infinite;margin-bottom:14px;"></div>
+        <div style="font-size:15px;font-weight:600;letter-spacing:-0.01em;color:#334155;">
+          Đang tải...
+        </div>
+        <style>
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        </style>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
