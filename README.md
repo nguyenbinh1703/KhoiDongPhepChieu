@@ -14,7 +14,7 @@
 
 Ứng dụng web mô phỏng thí nghiệm tương tác 3D phục vụ học tập và giảng dạy chuyên đề **Phép chiếu song song & Phép chiếu vuông góc** thuộc chương trình Hình học không gian lớp 11 (Chương trình Giáo dục phổ thông 2018).
 
-Mô hình đưa kiến thức toán học trừu tượng thành trải nghiệm trực quan sinh động, cho phép học sinh và giáo viên trực tiếp thao tác thay đổi góc chiếu của nguồn sáng mặt trời, quan sát sự hình thành bóng đổ của các khối đa diện trên mặt phẳng hình chiếu $(P)$, kiểm chứng các định lý toán học về tính bảo toàn và biến dạng hình học.
+Mô hình đưa kiến thức toán học trừu tượng thành trải nghiệm trực quan sinh động, cho phép học sinh và giáo viên trực tiếp thao tác thay đổi góc chiếu của nguồn sáng mặt trời, quan sát sự hình thành bóng đổ của các khối đa diện trên mặt phẳng $(P)$.
 
 ---
 
@@ -26,13 +26,13 @@ Mô hình đưa kiến thức toán học trừu tượng thành trải nghiệm
 * **Mặt phẳng hình chiếu $(P)$:** Thiết kế hình bình hành ngang đúng nguyên tắc vẽ hình học không gian trên mặt phẳng (hai cạnh trước - sau luôn nằm ngang $100\%$ trên màn hình).
 * **Vật thể đặt sát mặt sàn:** Chân vật tiếp xúc trực tiếp với mặt nền, triệt tiêu hoàn toàn trạng thái lơ lửng, bóng nối liền với chân đế chuẩn vật lý thực tế.
 
-### ☀️ Nguồn sáng & Hình bóng toán học chính xác tuyệt đối
+### ☀️ Nguồn sáng
 * **Mô phỏng nguồn sáng mặt trời trên cao:** Đèn laser hình trụ bán kính lớn ($R = 1.10$, bán kính quỹ đạo $RL = 4.2$), độ cao đèn giữ nguyên cố định khi chuyển đổi các khối hình.
 * **Dải góc chiếu liên tục:** Điều chỉnh góc nghiêng $\alpha \in [30^\circ, 150^\circ]$.
 * **Phép chiếu vuông góc ($\alpha = 90^\circ$):** Bóng nằm trọn vẹn $100\%$ dưới đáy chân đế và bị thân vật thể che khuất hoàn toàn.
 * **Thuật toán Convex Hull Andrew's Monotone Chain (Zero-GC):** Tính toán vết bóng thời gian thực với bộ đệm tĩnh tái sử dụng, không gây giật lag khung hình.
 
-### 🎨 Giao diện Đồ họa Phẳng & Trải nghiệm Người dùng
+### 🎨 Trải nghiệm Người dùng
 * **Phong cách Flat Design hiện đại:** Bảng điều khiển dạng phẳng, viền đôi sắc nét (`border-2 border-slate-300`), không bóng mờ, nổi bật tinh tế.
 * **Đồng bộ hóa 2 dòng công thái học:** Dòng 1 là thanh trượt Góc chiếu; Dòng 2 chia tỉ lệ 4:6 gồm ô chọn Khối 3D và ô thanh trượt Độ sáng.
 * **Động cơ âm thanh Web Audio DSP phản hồi xúc giác:** Khởi động sớm triệt tiêu độ trễ (0ms), bộ nén Master Limiter chống rè loa khi bấm liên thanh, quản lý đơn âm sắc dứt khoát.
@@ -84,4 +84,4 @@ npm run preview
 
 ## 📄 6. Giấy phép
 
-Dự án được phát hành theo giấy phép **Apache License 2.0**.
+Mọi chi tiết xin liên hệ tác giả. Không được sao chép dưới mọi hình thức.
